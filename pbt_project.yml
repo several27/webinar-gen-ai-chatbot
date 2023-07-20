@@ -1,0 +1,159 @@
+name: webinar-gen-ai-chatbot
+description: ''
+version: 0.0.1
+author: maciej@prophecy.io
+language: python
+buildSystem: ''
+buildSystemDetails:
+  artefactID: webinargenaichatbot
+  parentArtefactID: prophecy_maciej_personal
+  buildSystem: wheel
+  author: null
+  createdAt: '2023-07-20 07:35:11'
+pipelines:
+  pipelines/web_ingest:
+    name: web_ingest
+    description: ''
+    author: maciej@prophecy.io
+    mode: batch
+    artefactID: ''
+    language: python
+    createdAt: '2023-07-20 07:35:43'
+    datasets:
+      inputs:
+      - datasets/web_embeddings
+      - datasets/web_url
+      - datasets/web_xml
+      outputs:
+      - datasets/pinecone_target
+      - datasets/web_embeddings
+      - datasets/web_text
+    subgraphs: []
+    dependencies: {}
+  pipelines/live_chat:
+    name: live_chat
+    description: ''
+    author: maciej@prophecy.io
+    mode: stream
+    artefactID: ''
+    language: python
+    createdAt: '2023-07-20 07:40:51'
+    datasets:
+      inputs:
+      - datasets/slack_source
+      - datasets/web_embeddings
+      outputs:
+      - datasets/slack_target
+    subgraphs: []
+    dependencies: {}
+datasets:
+  datasets/web_url:
+    name: web_url
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:36:32'
+    mode: batch
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: WebApp
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:36:32'
+  datasets/web_text:
+    name: web_text
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:37:11'
+    mode: batch
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: File
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:37:11'
+  datasets/web_xml:
+    name: web_xml
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:37:40'
+    mode: batch
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: File
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:37:40'
+  datasets/web_embeddings:
+    name: web_embeddings
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:38:21'
+    mode: batch
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: Database
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:38:21'
+  datasets/pinecone_target:
+    name: pinecone_target
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:38:59'
+    mode: batch
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: Warehouse
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:38:59'
+  datasets/slack_source:
+    name: slack_source
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:41:38'
+    mode: stream
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: WebApp
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:41:38'
+  datasets/slack_target:
+    name: slack_target
+    description: ''
+    author: maciej@prophecy.io
+    createdAt: '2023-07-20 07:42:46'
+    mode: stream
+    physicalDatasets:
+      db_product:
+        fabricId: 1777
+        datasetType: WebApp
+        description: ''
+        author: maciej@prophecy.io
+        createdAt: '2023-07-20 07:42:46'
+templates: {}
+jobs: {}
+functions:
+  author: null
+  createdAt: '2023-07-20 07:35:11'
+  gems: {}
+  udfs: {}
+  udafs: {}
+  expressions: {}
+subgraphs: {}
+sqlModels: {}
+sqlMacros: {}
+sqlSeeds: {}
+sqlSources: {}
+sqlUnreferencedSources: {}
+sqlPipeline: null
+dependencies: []
+projectDependencies: {}
+pipelineConfigurations: {}
